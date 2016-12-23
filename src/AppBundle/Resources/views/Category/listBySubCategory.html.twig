@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="container-fluid" style="margin-top: 30px;">
+        <div style="padding-right: 0px;" class="col-md-9">
+            {# table body #}
+            {% for product in products %}
+                <a href="{{path('productDetailPage',{id: product.id})}}">
+                    <div class="well" style="padding: 0px;">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8">
+                                <h2 class="title-color">{{product.title}}</h2>
+                                <p>{{ product.city.name }}</p>
+                                <div class="row" style="margin-top: 50px;">
+                                    <div class="col-md-2"><time class="title-small">26 ‍ پیش</time></div>
+                                    <div class="col-md-10"><strong>16000</strong> <small class="title-small">تومان</small></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 hidden-xs">
+                                {% if ( product.images | length) > 0  %}
+                                    <img width="260" height="195" src="{{ asset(product.images[0].getImagePathNameMediumSize())}}">
+                                {% else %}
+                                    <img src="{{asset('images/not_available.jpg')}}" width="260" height="195" class="img-responsive">
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% else %}
+                No Products Set!!!
+            {% endfor %}
+        </div>
+        <div class="col-md-3">
+            <ul class="list-group">
+                <a href="{{path('listPage',{id: cityId})}}"><li style="font-size:20px;" class="list-group-item"><span class="glyphicon glyphicon-share-alt"></span></li></a>
+                <li style="font-size:20px;" class="list-group-item active">{{catTitle}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="navigation pull-left">
+            {{ knp_pagination_render(products) }}
+        </div>
+    </div>
+
+{% endblock %}

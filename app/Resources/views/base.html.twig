@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            <script src="{{asset('/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
+            <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet">
+            <link href="{{asset('/css/custom.css')}}" rel="stylesheet" type="text/css"/>
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body dir="rtl">
+        <div class="container-fluid" id="header">
+            <div class="container" style='padding: 15px;'>
+                <div class="col-md-3"><a href='{{path('categoryPage')}}' class="btn btn-success btn-lg btn-block"><span style="margin-left: 10px;" class="glyphicon glyphicon-plus"></span><b>ثبت رایگان اگهی</b></a></div>
+                <div class="col-md-3"></div>
+                <div style='margin-top: 15px;' class="col-md-3"><span style='margin-left: 5px;' class='glyphicon glyphicon-user'></span>حساب من</div>
+                <div class="col-md-3"><a href='{{path('homePage')}}'><img src='http://placehold.it/50x50' class='img-circle'></a></div>
+            </div>
+        </div>
+
+    {% block breadcrumb %}{% endblock %}
+
+    {% block body %}{% endblock %}
+
+    {% block javascripts %}
+        <script src="{{asset('/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('/js/iranmap.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/js/ajax.js')}}" type="text/javascript"></script>
+    {% endblock %}
+</body>
+</html>

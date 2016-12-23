@@ -1,0 +1,21 @@
+{% extends "base.html.twig"%}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="{{path('categoryPage')}}">{{category.title}}</a></li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+
+    <div class='container form-border' style='margin-top: 30px;'> 
+        <ul>
+            {% for childCategory in childCategories %}
+                <li><a href="{{path('newPage',{id: childCategory.id})}}">{{childCategory.title}}</a></li>
+                {% else %}
+                <div class="well"><p>ارشیوی هنوز ست نشده است</p></div>
+            {% endfor %}
+        </ul>
+
+    </div>
+{% endblock %}

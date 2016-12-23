@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+
+{% block breadcrumb %}{% endblock %}
+
+{% block body %}
+
+    <div class='container form-border' style='margin-top: 30px;'>
+        <p class='well' style='font-size: 14pt;'>برای ثبت آگهی جدید ابتدا باید موضوع مورد نظرتان را انتخاب نمایید</p>
+        <h4>موضوع</h4>
+        <br>
+        <ul>
+            {% for category in categories  %}
+                <li><a href="{{path('childCategoryPage',{id: category.id})}}">{{category.title}}</a></li>
+                {% endfor %}
+        </ul>
+
+    </div>
+
+{% endblock %}
+
